@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/dist/style.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'humidity', 'temp'],
+                ['-48', 33, 22],
+                ['-42', 30, 11],
+                ['-36', 35, 6],
+                ['-30', 35, 6],
+                ['-24', 35, 15],
+                ['-18', 35, 26],
+                ['-12', 35, 1],
+                ['-6', 40, 10],
+                ['now', 20, 10],
+            ]);
+
+            var options = {
+                title: 'Company Performance',
+                curveType: 'none',
+                legend: { position: 'bottom' },
+                backgroundColor: '#000',
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+
+        function updatechart() {
+            document.getElementById('curve_chart').innerHTML = ""
+            drawChart()
+        }
+        setInterval(updatechart, 1000);
+    </script>
+</head>
+
+<body class="bg-neutral-800 text-white">
+    <div class="text-black text-4xl font-extrabold flex justify-center items-center h-16 bg-amber-500">
+        <h1>
+            Smart Home
+        </h1>
+    </div>
+
+    <div class="grid ">
+        <div>
+            <span class="material-symbols-outlined">
+                door_front
+                <!-- door_open -->
+            </span>
+            <span>Closed</span>
+        </div>
+        <div>
+            <span class="material-symbols-outlined">
+                print_disabled
+                <!-- print_connect -->
+            </span>
+            <span>OFF</span></span>
+        </div>
+        <div>
+            <div>curent temp : <span>25</span>C° ; humidity : <span>33</span>%</div>
+            <div id="curve_chart" class="border"></div>
+        </div>
+    </div>
+    <nav class="bg-amber-700 border-t-4 border-amber-700 flex place-content-around gap-3 absolute bottom-0 inset-x-0 ">
+        <span
+            class="text-white material-symbols-outlined text-center text-5xl grow rounded-t-lg rounded-tl-none max-h-40 py-2 bg-slate-900 hover:bg-slate-800 cursor-pointer">
+            surround_sound
+        </span>
+        <span
+            class="text-white material-symbols-outlined text-center text-5xl grow rounded-t-lg -none max-h-40 py-2 bg-slate-900 hover:bg-slate-800 cursor-pointer">
+            home
+        </span>
+        <span
+            class="text-white material-symbols-outlined text-center text-5xl grow rounded-t-lg rounded-tr-none max-h-40 py-2 bg-slate-900 hover:bg-slate-800 cursor-pointer">
+            lightbulb
+        </span>
+    </nav>
+</body>
+
+</html>
