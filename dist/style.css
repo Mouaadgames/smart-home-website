@@ -655,6 +655,10 @@ video {
   min-height: 250px !important;
 }
 
+.min-h-\[200px\] {
+  min-height: 200px !important;
+}
+
 .max-w-4xl {
   max-width: 56rem !important;
 }
